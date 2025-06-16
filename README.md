@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 AI 创作工坊
 
-## Getting Started
+基于 [Vercel AI SDK](https://github.com/vercel/ai) 构建的现代化AI内容生成平台，支持文生图和文生视频功能。
 
-First, run the development server:
+## ✨ 功能特点
 
+- 🖼️ **AI文生图**: 基于OpenAI DALL-E 3，支持多种风格和尺寸
+- 🎬 **AI文生视频**: 基于Replicate API，支持Stable Video Diffusion
+- 🎨 **多种风格**: 写实、艺术、卡通、抽象等风格选择
+- 📱 **响应式设计**: 完美支持桌面端和移动端
+- ⚡ **实时进度**: 实时显示生成进度和状态
+- 🚀 **快速部署**: 一键部署到Vercel
+
+## 🛠️ 技术栈
+
+- **前端框架**: Next.js 15 + React 19
+- **AI SDK**: Vercel AI SDK
+- **样式**: Tailwind CSS
+- **类型安全**: TypeScript
+- **部署**: Vercel
+
+## 📦 快速开始
+
+### 1. 安装依赖
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 配置环境变量
+创建 `.env.local` 文件并添加以下API密钥：
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+# OpenAI API（用于DALL-E 3图像生成）
+OPENAI_API_KEY=sk-xxx
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Replicate API（用于视频生成）
+REPLICATE_API_TOKEN=r8_xxx
 
-## Learn More
+# 应用配置
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. 启动开发服务器
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+访问 [http://localhost:3000](http://localhost:3000) 查看应用。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔑 API密钥获取
 
-## Deploy on Vercel
+### OpenAI API Key
+1. 访问 [OpenAI Platform](https://platform.openai.com/api-keys)
+2. 登录并创建新的API密钥
+3. 确保账户有足够的信用额度
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Replicate API Token
+1. 访问 [Replicate](https://replicate.com/account/api-tokens)
+2. 登录并创建新的API令牌
+3. 复制令牌到环境变量中
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💡 使用指南
+
+### 文生图功能
+1. 选择"📸 文生图"标签
+2. 输入图像描述
+3. 选择风格和尺寸
+4. 点击"生成图像"按钮
+
+### 文生视频功能
+1. 选择"🎬 文生视频"标签
+2. 输入视频描述
+3. 选择时长和帧率
+4. 点击"生成视频"按钮
+
+## 🚀 部署到Vercel
+
+```bash
+npm run build
+```
+
+或使用 Vercel CLI：
+```bash
+vercel --prod
+```
+
+## 💰 成本估算
+
+- **OpenAI DALL-E 3**: $0.040/图像 (1024×1024)
+- **Replicate视频**: 约$0.01-0.05/秒
+
+## 📄 许可证
+
+MIT License
