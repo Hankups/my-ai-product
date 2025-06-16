@@ -69,10 +69,11 @@ export async function POST(req: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('图像生成错误:', error);
+    const errorMessage = error instanceof Error ? error.message : '未知错误';
     return NextResponse.json(
-      { error: `服务器错误: ${error.message}` },
+      { error: `服务器错误: ${errorMessage}` },
       { status: 500 }
     );
   }

@@ -52,8 +52,9 @@ export default function ImageGenerator() {
       }
 
       setGeneratedImage(data);
-    } catch (err: any) {
-      setError(err.message || '生成过程中出现错误');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : '生成过程中出现错误';
+      setError(errorMessage);
     } finally {
       setIsGenerating(false);
     }

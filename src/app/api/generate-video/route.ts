@@ -66,10 +66,11 @@ export async function POST(req: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('视频生成错误:', error);
+    const errorMessage = error instanceof Error ? error.message : '未知错误';
     return NextResponse.json(
-      { error: `服务器错误: ${error.message}` },
+      { error: `服务器错误: ${errorMessage}` },
       { status: 500 }
     );
   }
@@ -118,10 +119,11 @@ export async function GET(req: NextRequest) {
       logs: prediction.logs,
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('获取视频状态错误:', error);
+    const errorMessage = error instanceof Error ? error.message : '未知错误';
     return NextResponse.json(
-      { error: `服务器错误: ${error.message}` },
+      { error: `服务器错误: ${errorMessage}` },
       { status: 500 }
     );
   }

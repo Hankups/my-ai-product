@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface GeneratedVideo {
   predictionId: string;
@@ -68,8 +68,9 @@ export default function VideoGenerator() {
       
       // 开始轮询检查状态
       pollVideoStatus(data.predictionId);
-    } catch (err: any) {
-      setError(err.message || '生成过程中出现错误');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : '生成过程中出现错误';
+      setError(errorMessage);
       setIsGenerating(false);
     }
   };
@@ -96,7 +97,7 @@ export default function VideoGenerator() {
         // 继续轮询
         setTimeout(() => pollVideoStatus(predictionId), 5000);
       }
-    } catch (err: any) {
+    } catch {
       setError('检查视频状态时出错');
       setIsGenerating(false);
     }
